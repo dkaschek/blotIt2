@@ -1,0 +1,21 @@
+Package: blotIt2
+Type: Package
+Title: Align Time-Course Data by a Mixed-Effects Alignment Model
+Version: 0.1
+Date: 2016-10-28
+Author: Daniel Kaschek
+Maintainer: Daniel Kaschek <daniel.kaschek@physik.uni-freiburg.de>
+Description: An implementation of non-linear mixed models
+    for the alignment of data. It primarily deals with time-course
+    data of different targets which have been measured under different
+    experimental conditions and whose measured values might be on a
+    different scale, e.g. because of different amplification.
+    The algorithm determines the different scaling and estimates the
+    time-course on a common scale.
+License: GPL (>= 2)
+Depends:
+    ggplot2,
+    trust,
+    rootSolve
+LazyData: TRUE
+RoxygenNote: 5.0.1
