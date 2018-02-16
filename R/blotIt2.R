@@ -515,7 +515,7 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
       sigma = as.numeric(sqrt(diag(2*MASS::ginv(myfit$hessian))))*bessel,
       nll = myfit$value,
       npar = length(myfit$argument),
-      ndata = nrow(data_target) + normalize
+      ndata = nrow(data_target) # + normalize
     )
 
     if (log) {
