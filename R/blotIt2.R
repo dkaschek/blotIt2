@@ -496,7 +496,7 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
 
     if (!myfit$converged) warning(paste("Non-converged fit for target", targets[i]))
     res.out <- resfn(myfit$argument, pars.fixed, deriv = FALSE)
-    bessel <- sqrt(nrow(data_fit)/(nrow(data_fit) - length(parsini)))
+    bessel <- sqrt(nrow(data_fit)/(nrow(data_fit) - length(parsini) + normalize))
 
     # Test identifiability
     sv <- svd(myfit[["hessian"]])[["d"]]
@@ -514,7 +514,7 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
       value = myfit$argument,
       sigma = as.numeric(sqrt(diag(2*MASS::ginv(myfit$hessian))))*bessel,
       nll = myfit$value,
-      npar = length(myfit$argument),
+      npar = length(myfit$argument) - normalize,
       ndata = nrow(data_target) # + normalize
     )
 
