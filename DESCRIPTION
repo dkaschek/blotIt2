@@ -16,6 +16,7 @@ License: GPL (>= 2)
 Depends:
     ggplot2,
     trust,
-    rootSolve
+    rootSolve,
+    trustOptim
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 7.0.2
