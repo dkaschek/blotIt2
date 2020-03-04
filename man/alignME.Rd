@@ -4,9 +4,18 @@
 \alias{alignME}
 \title{Align time-course data based on an Mixed-Effects alignment model}
 \usage{
-alignME(data, model = "ys/sj", errmodel = "value*sigmaR", fixed = ys ~
-  Condition, latent = sj ~ Experiment, error = sigmaR ~ 1, log = TRUE,
-  normalize = TRUE, reduce = FALSE, verbose = FALSE)
+alignME(
+  data,
+  model = "ys/sj",
+  errmodel = "value*sigmaR",
+  fixed = ys ~ Condition,
+  latent = sj ~ Experiment,
+  error = sigmaR ~ 1,
+  log = TRUE,
+  normalize = TRUE,
+  reduce = FALSE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{data}{data frame with obligatory columns "name", "time" and
@@ -163,4 +172,3 @@ plot1(out)
 get it in the right format for \code{alignME()}.
 \link{plot1}, \link{plot2}, \link{plot3}, \link{plot4} to plot the result of \code{alignME}.
 }
-

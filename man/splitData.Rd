@@ -20,4 +20,3 @@ list of data frames
 Split data in independent blocks according to fixed and latent
 variables as being defined for \link{alignME}.
 }
-

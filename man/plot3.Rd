@@ -19,4 +19,3 @@ effects.
 \seealso{
 \link{plot1}, \link{plot2}, \link{plot4}
 }
-

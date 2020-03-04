@@ -28,4 +28,3 @@ Reads data stored in a wide format, i.e. description
 columns with time points, experimental conditions, etc. are
 followed by each one column per measured target.
 }
-

@@ -12,4 +12,3 @@ stimulation or treatment. Long format as required for
 \code{alignME()}
 }
 \keyword{data}
-

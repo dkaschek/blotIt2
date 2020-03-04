@@ -10,6 +10,7 @@ colors_SK <- c("#0147A6","#B1170F","#0b8a00","#ffc801","#02a0c5","#ff7802","#65D
 #' e.g. \code{name == "pERK1" & time < 60}.
 #'
 #' @export
+#' @author Svenja Kemmer
 #' @import ggplot2
 #' @seealso \link{plotNew2}, \link{plotNew3}, \link{plotDR1}, \link{plotDR2}, \link{plotDR3}
 plotNew1 <- function (out, ..., residual = FALSE)
@@ -71,6 +72,7 @@ plotNew1 <- function (out, ..., residual = FALSE)
 #' e.g. \code{name == "pERK1" & time < 60}.
 #'
 #' @export
+#' @author Svenja Kemmer
 #' @import ggplot2
 #' @seealso \link{plotNew1}, \link{plotNew3}, \link{plotDR1}, \link{plotDR2}, \link{plotDR3}
 plotNew2 <-function (out, ...)
@@ -114,6 +116,7 @@ plotNew2 <-function (out, ...)
 #' e.g. \code{name == "pERK1" & time < 60}.
 #'
 #' @export
+#' @author Svenja Kemmer
 #' @import ggplot2
 #' @seealso \link{plotNew1}, \link{plotNew3}, \link{plotDR1}, \link{plotDR2}, \link{plotDR3}
 plotNew3 <-function (out)
@@ -152,6 +155,7 @@ plotNew3 <-function (out)
 #' e.g. \code{name == "pERK1" & time < 60}.
 #'
 #' @export
+#' @author Svenja Kemmer
 #' @import ggplot2
 #' @seealso \link{plotNew1}, \link{plotNew2}, \link{plotNew3}, \link{plotDR2}, \link{plotDR3}
 plotDR1 <- function (out, ...)
@@ -210,6 +214,7 @@ plotDR1 <- function (out, ...)
 #' e.g. \code{name == "pERK1" & time < 60}.
 #'
 #' @export
+#' @author Svenja Kemmer
 #' @import ggplot2
 #' @seealso \link{plotNew1}, \link{plotNew2}, \link{plotNew3}, \link{plotDR1}, \link{plotDR3}
 plotDR2 <- function (out, ...)
@@ -268,6 +273,7 @@ plotDR2 <- function (out, ...)
 #' e.g. \code{name == "pERK1" & time < 60}.
 #'
 #' @export
+#' @author Svenja Kemmer
 #' @import ggplot2
 #' @seealso \link{plotNew1}, \link{plotNew2}, \link{plotNew3}, \link{plotDR1}, \link{plotDR2}
 plotDR3 <- function (out, ...)

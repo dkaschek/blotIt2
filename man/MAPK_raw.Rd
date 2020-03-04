@@ -11,4 +11,3 @@ measurement originates whereas "Condition" refers to the
 stimulation or treatment. Wide format as frequently found in a lab.
 }
 \keyword{data}
-
