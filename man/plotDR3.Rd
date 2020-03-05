@@ -4,13 +4,18 @@
 \alias{plotDR3}
 \title{PlotDR 3}
 \usage{
-plotDR3(out, ...)
+plotDR3(out, ..., ymin = NULL, units = c("", ""))
 }
 \arguments{
-\item{out}{output of \link{alignME} with columns time, dose, ...}
+\item{out}{output of \link{alignME} with obligatory columns time and dose}
 
 \item{...}{logical expression used for subsetting the data frames,
 e.g. \code{name == "pERK1" & time < 60}.}
+
+\item{ymin}{value defining ymin for all y-axes}
+
+\item{units}{character vector of length 2 defining units for the x- and y-axes,
+e.g. \code{c("[ng/ml]","[a.u.]")}}
 }
 \description{
 Plot the dose response prediction of the alignment model grouped by fixed
@@ -18,4 +23,7 @@ effects in new style.
 }
 \seealso{
 \link{plotNew1}, \link{plotNew2}, \link{plotNew3}, \link{plotDR1}, \link{plotDR2}
+}
+\author{
+Svenja Kemmer
 }

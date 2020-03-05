@@ -4,13 +4,18 @@
 \alias{plotNew2}
 \title{PlotNew 2}
 \usage{
-plotNew2(out, ...)
+plotNew2(out, ..., ymin = NULL, units = c("", ""))
 }
 \arguments{
-\item{out}{output of \link{alignME}.}
+\item{out}{output of \link{alignME}}
 
 \item{...}{logical expression used for subsetting the data frames,
 e.g. \code{name == "pERK1" & time < 60}.}
+
+\item{ymin}{value defining ymin for all y-axes}
+
+\item{units}{character vector of length 2 defining units for the x- and y-axes,
+e.g. \code{c("[min]","[a.u.]")}}
 }
 \description{
 Plot the prediction of the alignment model together with the
@@ -19,4 +24,7 @@ time-course in new style.
 }
 \seealso{
 \link{plotNew1}, \link{plotNew3}, \link{plotDR1}, \link{plotDR2}, \link{plotDR3}
+}
+\author{
+Svenja Kemmer
 }
