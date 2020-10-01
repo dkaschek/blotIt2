@@ -642,8 +642,8 @@ splitData <- function(data, fixed, latent) {
   } else {
     intercept <- TRUE
   }
-  specific <- c("name", attr(terms(fixed), "term.labels"))
-  fixed <- c("name", "time", attr(terms(latent), "term.labels"))
+  specific <- c("name", attr(terms(latent), "term.labels"))
+  fixed <- c("name", "time", attr(terms(fixed), "term.labels"))
 
   paste.mod <- function(...) paste(..., sep = "_")
 
