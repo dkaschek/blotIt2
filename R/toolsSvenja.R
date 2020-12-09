@@ -16,7 +16,7 @@ colors_SK <- c("#0147A6", "#B1170F", "#0b8a00", "#ffc801", "#02a0c5", "#ff7802",
 #' @author Svenja Kemmer
 #' @import ggplot2
 #' @seealso \link{plotNew2}, \link{plotNew3}, \link{plotDR1}, \link{plotDR2}, \link{plotDR3}
-plotNew1 <- function(out, ..., ymin = NULL, units = c("", ""), residual = FALSE) {
+plotNew1 <- function(out, ..., ymin = NULL, units = c("", ""), trans = 0.2, residual = FALSE) {
   fixed <- attr(out, "fixed")
   latent <- attr(out, "latent")
   out <- attr(out, "outputs")
@@ -36,7 +36,7 @@ plotNew1 <- function(out, ..., ymin = NULL, units = c("", ""), residual = FALSE)
   if (!residual) {
     P <- ggplot(out$prediction, aes(x = time, y = value, group = latent, color = latent, fill = latent)) +
       facet_wrap(~ name * fixed, scales = "free") +
-      geom_ribbon(aes(ymin = value - sigma, ymax = value + sigma), alpha = 0.3, lty = 0) +
+      geom_ribbon(aes(ymin = value - sigma, ymax = value + sigma), alpha = trans, lty = 0) +
       geom_line() +
       geom_point(data = out$original) +
       scale_color_manual(values = colors_SK, name = legend.name) +
@@ -71,7 +71,7 @@ plotNew1 <- function(out, ..., ymin = NULL, units = c("", ""), residual = FALSE)
 
   if (is.numeric(ymin)) P <- P + scale_y_continuous(limits = c(ymin, NA))
 
-  print("Plot 1: Data scaled & Prediction scaled")
+  print("Plot 1: Raw data and prediction on original scale")
 
   return(P)
 }
@@ -147,7 +147,7 @@ plotNew2 <- function(out, ..., ymin = NULL, units = c("", "")) {
 #' @author Svenja Kemmer
 #' @import ggplot2
 #' @seealso \link{plotNew1}, \link{plotNew3}, \link{plotDR1}, \link{plotDR2}, \link{plotDR3}
-plotNew3 <- function(out, ..., ymin = NULL, units = c("", "")) {
+plotNew3 <- function(out, ..., ymin = NULL, trans = 0.2, units = c("", "")) {
   fixed <- attr(out, "fixed")
   latent <- attr(out, "latent")
   out <- attr(out, "outputs")
@@ -157,7 +157,7 @@ plotNew3 <- function(out, ..., ymin = NULL, units = c("", "")) {
   legend.name <- paste(fixed, collapse = ", ")
   P <- ggplot(out$aligned, aes(x = time, y = value, group = fixed, color = fixed, fill = fixed)) +
     facet_wrap(~name, scales = "free") +
-    geom_ribbon(aes(ymin = value - sigma, ymax = value + sigma), alpha = 0.3, lty = 0) +
+    geom_ribbon(aes(ymin = value - sigma, ymax = value + sigma), alpha = trans, lty = 0) +
     geom_line() +
     geom_point() +
     scale_color_manual(values = colors_SK, name = legend.name) +
@@ -386,4 +386,17 @@ plotDR3 <- function(out, ..., ymin = NULL, units = c("", "")) {
   print("Dose response 3: Data aligned & Prediction aligned")
 
   return(P)
+}
+
+
+#' Get scaled replicates
+#'
+#' Extract scaled replicates from the blotIt output.
+#'
+#' @param out output of \link{alignME}
+#'
+#' @export
+#' @author Svenja Kemmer
+getReplicates <- function(out) {
+  attr(out, "outputs")$scaled
 }
