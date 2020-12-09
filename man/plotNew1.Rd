@@ -4,7 +4,14 @@
 \alias{plotNew1}
 \title{PlotNew 1}
 \usage{
-plotNew1(out, ..., ymin = NULL, units = c("", ""), residual = FALSE)
+plotNew1(
+  out,
+  ...,
+  ymin = NULL,
+  units = c("", ""),
+  trans = 0.2,
+  residual = FALSE
+)
 }
 \arguments{
 \item{out}{output of \link{alignME}}

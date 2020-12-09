@@ -19,4 +19,4 @@ Depends:
     rootSolve,
     trustOptim
 LazyData: TRUE
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1

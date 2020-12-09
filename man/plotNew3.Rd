@@ -4,7 +4,7 @@
 \alias{plotNew3}
 \title{PlotNew 3}
 \usage{
-plotNew3(out, ..., ymin = NULL, units = c("", ""))
+plotNew3(out, ..., ymin = NULL, trans = 0.2, units = c("", ""))
 }
 \arguments{
 \item{out}{output of \link{alignME}}
