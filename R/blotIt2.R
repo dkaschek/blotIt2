@@ -195,7 +195,8 @@ rssModel <- function(parlist, data_fit,
 #' @importFrom utils getParseData
 alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
                       fixed = ys~Condition, latent  = sj~Experiment, error = sigmaR~1,
-                      log = TRUE, normalize = TRUE, reduce = FALSE, verbose = FALSE) {
+                      log = TRUE, normalize = TRUE, reduce = FALSE, verbose = FALSE,
+                    normalize_input = T) {
 
   pdata <- NULL
   if (inherits(data, "aligned")) {
