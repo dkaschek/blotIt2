@@ -636,10 +636,10 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
 #' @param data data frame with columns "name", "time", "value" and others
 #' @param fixed two-sided formula, see \link{alignME}
 #' @param latent two-sided formula, see \link{alignME}
-#' @param normalize_input logical if set to TRUE, the input data will normalized
-#' per latent effect by dividing by the respective mean. Prevents convergence
-#' failure on some hardware when the data for different latent effects differ by
-#' to many orders of magnitude.
+#' @param normalize_input logical, if set to TRUE, the input data will be
+#' normalized by dividing all entries belonging to one scaling factor by their
+#'  respective mean. This prevents convergence failure on some hardware when the
+#'  data for different latent effects differ by to many orders of magnitude.
 #' @return list of data frames
 #' @export
 splitData <- function(data, fixed, latent, normalize_input, log) {

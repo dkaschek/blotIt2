@@ -13,10 +13,10 @@ splitData(data, fixed, latent, normalize_input, log)
 
 \item{latent}{two-sided formula, see \link{alignME}}
 
-\item{normalize_input}{logical if set to TRUE, the input data will normalized
-per latent effect by dividing by the respective mean. Prevents convergence
-failure on some hardware when the data for different latent effects differ by
-to many orders of magnitude.}
+\item{normalize_input}{logical, if set to TRUE, the input data will be
+normalized by dividing all entries belonging to one scaling factor by their
+ respective mean. This prevents convergence failure on some hardware when the
+ data for different latent effects differ by to many orders of magnitude.}
 }
 \value{
 list of data frames

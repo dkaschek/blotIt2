@@ -14,7 +14,8 @@ alignME(
   log = TRUE,
   normalize = TRUE,
   reduce = FALSE,
-  verbose = FALSE
+  verbose = FALSE,
+  normalize_input = T
 )
 }
 \arguments{
