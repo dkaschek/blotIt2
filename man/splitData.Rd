@@ -4,7 +4,7 @@
 \alias{splitData}
 \title{splitData}
 \usage{
-splitData(data, fixed, latent)
+splitData(data, fixed, latent, normalize_input, log)
 }
 \arguments{
 \item{data}{data frame with columns "name", "time", "value" and others}
@@ -12,6 +12,11 @@ splitData(data, fixed, latent)
 \item{fixed}{two-sided formula, see \link{alignME}}
 
 \item{latent}{two-sided formula, see \link{alignME}}
+
+\item{normalize_input}{logical if set to TRUE, the input data will normalized
+per latent effect by dividing by the respective mean. Prevents convergence
+failure on some hardware when the data for different latent effects differ by
+to many orders of magnitude.}
 }
 \value{
 list of data frames

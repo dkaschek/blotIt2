@@ -58,6 +58,9 @@ log-scale.}
 parameter should be normalized to unit mean.}
 
 \item{verbose}{logical, print out information about each fit}
+
+\item{normalize_input}{logical, if TRUE the input will be normalized before
+scaling. see \link{splitData}.}
 }
 \value{
 Object of class \code{aligned}, i.e. a data frame of the
