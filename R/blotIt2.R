@@ -641,7 +641,7 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
 #' to many orders of magnitude.
 #' @return list of data frames
 #' @export
-splitData <- function(data, fixed, latent) {
+splitData <- function(data, fixed, latent, normalize_input, log) {
 
   if (!"1" %in% colnames(data)) {
     data["1"] <- 1
