@@ -148,6 +148,8 @@ rssModel <- function(parlist, data_fit,
 #' @param normalize logical indicating whether the fixed effect
 #' parameter should be normalized to unit mean.
 #' @param verbose logical, print out information about each fit
+#' @param normalize_input logical, if TRUE the input will be normalized before
+#' scaling. see \link{splitData}.
 #' @details Alignment of time-course data is achieved by an alignment
 #' model which explains the observed data by a function mixing
 #' fixed effects, usually parameters reflecting the "underlying"
@@ -224,7 +226,8 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
   errorpars <- getSymbols(as.character(error)[2])
 
   # Split mydata in independent blocks by levels of name
-  data.list <- splitData(data, fixed, latent)
+  data.list <- splitData(data, fixed, latent, normalize_input = normalize_input,
+                         log = log)
   ndata <- length(data.list)
 
   # Targets, parameters and constraints
@@ -632,6 +635,10 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
 #' @param data data frame with columns "name", "time", "value" and others
 #' @param fixed two-sided formula, see \link{alignME}
 #' @param latent two-sided formula, see \link{alignME}
+#' @param normalize_input logical if set to TRUE, the input data will normalized
+#' per latent effect by dividing by the respective mean. Prevents convergence
+#' failure on some hardware when the data for different latent effects differ by
+#' to many orders of magnitude.
 #' @return list of data frames
 #' @export
 splitData <- function(data, fixed, latent) {
@@ -665,10 +672,26 @@ splitData <- function(data, fixed, latent) {
 
 
   if (!intercept) data <- data[ , -which(colnames(data) == "1")]
-  lapply(mylist, function(l) {
+  list_out <- lapply(mylist, function(l) {
 
     data[fixed.data %in% fixed.unique[l], ]
 
   })
+
+  # normalize the data
+  if (normalize_input) {
+    if (log) {
+      for (i in seq_len(length(list_out))) {
+        list_out[[i]]$value <- list_out[[i]]$value /
+          exp(mean(log(list_out[[i]]$value)))
+      }
+    } else {
+      for (i in seq_len(length(list_out))) {
+        list_out[[i]]$value <- list_out[[i]]$value / mean(list_out[[i]]$value)
+      }
+    }
+  }
+
+  return(list_out)
 
 }
