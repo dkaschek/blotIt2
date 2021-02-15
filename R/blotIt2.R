@@ -209,8 +209,10 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
   if (length(as.character(latent)) < 3) stop("Left and right-hand side of formula 'latent' is needed")
   if (length(as.character(error)) < 3) stop("Left and right-hand side of formula 'err' is needed")
 
+
+  warning(cat("Time is not part of the fixed parameters\n"))
   # Get fixed and latent effects
-  fix <- union(c("name", "time"), getSymbols(as.character(fixed)[3]))
+  fix <- union(c("name"), getSymbols(as.character(fixed)[3]))
   ran <- union("name", getSymbols(as.character(latent)[3]))
   err <- union("name", getSymbols(as.character(error)[3]))
 
