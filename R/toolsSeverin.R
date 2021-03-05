@@ -79,7 +79,7 @@ plot_blotIt <- function(
     stop("\n\t'plot_points' and 'plot_line' must each be one of c('original', 'scaled', 'prediction', 'aligned')\n")
   }
 
-  if (class(out) == "list") {
+  if (class(out)[1] == "list") {
     cat("Data is in form of list, continuing\n")
     out_list <- out
   } else {
