@@ -17,6 +17,7 @@ Depends:
     ggplot2,
     trust,
     rootSolve,
-    trustOptim
+    trustOptim,
+    lemon
 LazyData: TRUE
 RoxygenNote: 7.1.1
