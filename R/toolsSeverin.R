@@ -65,8 +65,8 @@ blotIt_out_to_list <- function(
 #' @importFrom lemon facet_rep_wrap
 plot_blotIt <- function(
   out,
-  plot_points = "original",
-  plot_line = "prediction",
+  plot_points = "aligned",
+  plot_line = "aligned",
   spline = F,
   scales = "fixed",
   plot_caption = T,

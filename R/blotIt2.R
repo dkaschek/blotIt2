@@ -197,6 +197,7 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
                       fixed = ys~Condition, latent  = sj~Experiment, error = sigmaR~1,
                       log = TRUE, normalize = TRUE, reduce = FALSE, verbose = FALSE,
                     normalize_input = T) {
+  data <- as.data.frame(data)
 
   pdata <- NULL
   if (inherits(data, "aligned")) {
@@ -643,7 +644,7 @@ alignME <- function(data, model = "ys/sj", errmodel = "value*sigmaR",
 #' @return list of data frames
 #' @export
 splitData <- function(data, fixed, latent, normalize_input, log) {
-
+  # data <- as.data.frame(data)
   if (!"1" %in% colnames(data)) {
     data["1"] <- 1
     intercept <- FALSE

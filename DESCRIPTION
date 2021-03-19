@@ -18,6 +18,7 @@ Depends:
     trust,
     rootSolve,
     trustOptim,
-    lemon
+    lemon,
+    data.table
 LazyData: TRUE
 RoxygenNote: 7.1.1
