@@ -439,6 +439,7 @@ plot_blotItS <- function(
   plot_line = "aligned",
   spline = F,
   scales = "free",
+  alignzeros = TRUE,
   plot_caption = T,
   ncol = NULL,
   mycolors = NULL,
@@ -611,13 +612,16 @@ plot_blotItS <- function(
                                             panel.background = element_blank(), plot.margin = unit(c(0,0.5,0.5,0.5), "cm"))
   g <- g + xlab("\nTime") + ylab("Signal\n")# + ggtitle("Title Plot2")
 
-  if(plot_points != "original"){
-    # scale y-axes (let them start at same minimum determined by smallest value-sigma and end at individual ymax)
-    plot_list_points <- as.data.table(plot_list_points)
-    blank_data <- plot_list_points[, list(ymax = max(value + sigma), ymin = min(value - sigma)), by = c("name", "fixed", "latent")]
-    blank_data[, ":=" (ymin = min(ymin), ymax = ymaximal(ymax)), by = c("name", "fixed", "latent")]
-    blank_data <- melt(blank_data, id.vars = c("name", "fixed", "latent"), measure.vars = c("ymax", "ymin"), value.name = "value") %>% .[, ":="(time = 0, variable = NULL)]
-    g <- g + geom_blank(data = as.data.frame(blank_data), aes(x = time, y = value))
+  if(alignzeros){
+    if(plot_points != "original"){
+      # scale y-axes (let them start at same minimum determined by smallest value-sigma and end at individual ymax)
+      plot_list_points <- as.data.table(plot_list_points)
+      blank_data <- plot_list_points[, list(ymax = max(value + sigma), ymin = min(value - sigma)), by = c("name", "fixed", "latent")]
+      blank_data[, ":=" (ymin = min(ymin))] # same minimum for all proteins
+      blank_data[, ":=" (ymax = ymaximal(ymax)), by = c("name", "fixed", "latent")] # protein specific maximum
+      blank_data <- melt(blank_data, id.vars = c("name", "fixed", "latent"), measure.vars = c("ymax", "ymin"), value.name = "value") %>% .[, ":="(time = 0, variable = NULL)]
+      g <- g + geom_blank(data = as.data.frame(blank_data), aes(x = time, y = value))
+    }
   }
 
   if (plot_caption) {

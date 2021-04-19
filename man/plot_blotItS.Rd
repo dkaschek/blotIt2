@@ -11,6 +11,7 @@ plot_blotItS(
   plot_line = "aligned",
   spline = F,
   scales = "free",
+  alignzeros = TRUE,
   plot_caption = T,
   ncol = NULL,
   mycolors = NULL,
