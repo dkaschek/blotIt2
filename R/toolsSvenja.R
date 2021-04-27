@@ -619,7 +619,8 @@ plot_blotItS <- function(
       blank_data <- plot_list_points[, list(ymax = max(value + sigma), ymin = min(value - sigma)), by = c("name", "fixed", "latent")]
       blank_data[, ":=" (ymin = min(ymin))] # same minimum for all proteins
       blank_data[, ":=" (ymax = ymaximal(ymax)), by = c("name", "fixed", "latent")] # protein specific maximum
-      blank_data <- melt(blank_data, id.vars = c("name", "fixed", "latent"), measure.vars = c("ymax", "ymin"), value.name = "value") %>% .[, ":="(time = 0, variable = NULL)]
+      blank_data <- melt(blank_data, id.vars = c("name", "fixed", "latent"), measure.vars = c("ymax", "ymin"), value.name = "value")
+      blank_data[, ":="(time = 0, variable = NULL)]
       g <- g + geom_blank(data = as.data.frame(blank_data), aes(x = time, y = value))
     }
   }
