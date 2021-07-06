@@ -682,16 +682,16 @@ splitData <- function(data, fixed, latent, normalize_input, log) {
 
   # normalize the data
   if (normalize_input) {
-    if (log) {
-      for (i in seq_len(length(list_out))) {
-        list_out[[i]]$value <- list_out[[i]]$value /
-          exp(mean(log(list_out[[i]]$value)))
-      }
-    } else {
-      for (i in seq_len(length(list_out))) {
-        list_out[[i]]$value <- list_out[[i]]$value / mean(list_out[[i]]$value)
-      }
+    # if (log) {
+    #   for (i in seq_len(length(list_out))) {
+    #     list_out[[i]]$value <- list_out[[i]]$value /
+    #       exp(mean(log(list_out[[i]]$value)))
+    #   }
+    # } else {
+    for (i in seq_len(length(list_out))) {
+      list_out[[i]]$value <- list_out[[i]]$value / mean(list_out[[i]]$value)
     }
+    # }
   }
 
   return(list_out)
